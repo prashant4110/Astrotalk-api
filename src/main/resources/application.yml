@@ -1,8 +1,15 @@
 spring:
+  flyway:
+    locations: classpath:DB
+    baselineOnMigrate: true
+    clean-disabled: false
+    clean-on-validation-error: false
+    table: flyway_schema_history
+    enabled: true
   datasource:
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     password: <7277prE>
-    url: jdbc:sqlserver://localhost:1433;databaseName=dev;encrypt=true;trustServerCertificate=true
+    url: jdbc:sqlserver://localhost:1433;databaseName=astrotalk;encrypt=true;trustServerCertificate=true
     username: sa
   jpa:
     hibernate:
