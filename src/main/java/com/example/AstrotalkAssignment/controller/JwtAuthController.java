@@ -33,7 +33,7 @@ public class JwtAuthController {
 
     private Logger logger = LoggerFactory.getLogger(JwtAuthController.class);
 
-
+//getting token here
     @PostMapping("/login")
     public ResponseEntity<jwtResponse> login(@RequestBody jwtRequest request) {
 
