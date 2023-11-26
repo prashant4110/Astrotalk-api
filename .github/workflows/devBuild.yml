@@ -4,8 +4,8 @@ on:
     branches:
       - dev
 jobs:
-  Deploy:
-    Uses: ./.github/workflows/build.yml
+  Deploy-Dev:
+    uses: ./.github/workflows/build.yml
     with:
       javaVersion: '17'
       webapp: assignment411
