@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
       - name: Build with Gradle
-        run: chmod +ux ./gradlew build
+        run: chmod +u ./gradlew build
 
       - name: 'Deploy to azure webapp'
         uses: azure/webapps-deploy@v2
