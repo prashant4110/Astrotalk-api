@@ -1,6 +1,5 @@
 package com.example.AstrotalkAssignment.repo;
 
-import com.example.AstrotalkAssignment.dto.User;
 import com.example.AstrotalkAssignment.entity.PatientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

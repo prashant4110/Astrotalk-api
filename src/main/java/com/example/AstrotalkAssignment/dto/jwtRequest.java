@@ -12,5 +12,4 @@ import lombok.NoArgsConstructor;
 public class jwtRequest {
     private String email;
     private String password;
-
 }

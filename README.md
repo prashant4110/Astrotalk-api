@@ -12,7 +12,7 @@ This is a spring boot application that supports token based authentication with 
 This application runs on SqlServer database and the RESTApi are tested on Insomnia/Postman.
 
 #### Steps for Application Initiallisation:-
- 1. #### Set up local seqServer database using docker image:-
+ 1. #### Set up local sqlServer database using docker image:-
     1. Install Docker desktop and run below command in cmd prompt.
     2. docker pull mcr.microsoft.com/mssql/server:2022-latest
     3. docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<7277prE>" -p 1433:1433 --name dev --hostname dev -d  mcr.microsoft.com/mssql/server:2022-latest

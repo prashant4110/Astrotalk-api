@@ -2,7 +2,6 @@ package com.example.AstrotalkAssignment.Auth;
 
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,6 +16,7 @@ import java.util.Map;
 public class jwtUtils {
     private Key key;
     public static final String secret = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
+
     @PostConstruct
     public void init() {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
@@ -44,9 +44,9 @@ public class jwtUtils {
     private String doGenerateToken(Map<String, Object> claims, String userId, String type) {
         long expirationTimeLong;
         if ("ACCESS".equals(type)) {
-            expirationTimeLong = Long.parseLong(String.valueOf(60*60)) * 1000;
+            expirationTimeLong = Long.parseLong(String.valueOf(60 * 60)) * 1000;
         } else {
-            expirationTimeLong = Long.parseLong(String.valueOf(60*60)) * 1000 * 5;
+            expirationTimeLong = Long.parseLong(String.valueOf(60 * 60)) * 1000 * 5;
         }
         final Date createdDate = new Date();
         final Date expirationDate = new Date(createdDate.getTime() + expirationTimeLong);

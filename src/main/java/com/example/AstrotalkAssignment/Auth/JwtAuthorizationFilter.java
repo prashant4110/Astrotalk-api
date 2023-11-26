@@ -11,10 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,30 +35,27 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         try {
 //            String accessToken = jwtUtil.resolveToken(request);
-            if (authHeader == null || !authHeader.startsWith("Bearer ") || request.getServletPath().contains("/auth") ) {
+            if (authHeader == null || !authHeader.startsWith("Bearer ") || request.getServletPath().contains("/auth")) {
                 filterChain.doFilter(request, response);
                 return;
             }
-            System.out.println("token : "+authHeader);
+            System.out.println("token : " + authHeader);
             final String jwt = authHeader.substring(7);
             Claims claims = jwtUtil.getAllClaimsFromToken(jwt);
-
-            if(claims != null & jwtUtil.isTokenValid(jwt)){
+            if (claims != null & jwtUtil.isTokenValid(jwt)) {
                 String email = claims.getSubject();
-                System.out.println("email : "+email);
+                System.out.println("email : " + email);
                 Authentication authentication =
-                        new UsernamePasswordAuthenticationToken(email,"",new ArrayList<>());
+                        new UsernamePasswordAuthenticationToken(email, "", new ArrayList<>());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             errorDetails.put("message", "Authentication Error");
-            errorDetails.put("details",e.getMessage());
+            errorDetails.put("details", e.getMessage());
             response.setStatus(HttpStatus.FORBIDDEN.value());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-
             mapper.writeValue(response.getWriter(), errorDetails);
-
         }
         filterChain.doFilter(request, response);
     }

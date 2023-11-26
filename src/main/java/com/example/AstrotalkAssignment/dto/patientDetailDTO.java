@@ -1,11 +1,7 @@
 package com.example.AstrotalkAssignment.dto;
 
 import lombok.*;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import java.util.Date;
-
-import static java.time.LocalTime.now;
 
 @Builder
 @Data

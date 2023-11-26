@@ -10,12 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmployeeService {
     @Autowired
     UserRepository userRepository;
+
     @Transactional
     public boolean saveRecord(EmployeeEntity req) throws Exception {
         try {
             userRepository.save(req);
             return true;
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return false;
         }
     }

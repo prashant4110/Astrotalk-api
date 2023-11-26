@@ -70,6 +70,7 @@ public class JwtAuthController {
         }
 
     }
+//manual exception class to handle exception
     @ExceptionHandler(BadCredentialsException.class)
     public String exceptionHandler() {
         return "Credentials Invalid !!";

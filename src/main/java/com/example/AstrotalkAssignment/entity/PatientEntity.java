@@ -13,28 +13,28 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Data
-@Table(name="patient")
+@Table(name = "patient")
 public class PatientEntity {
     @Id
-    @Column(name="patientId", nullable = false)
+    @Column(name = "patientId", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patientId;
-    @Column(name="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name="age", nullable = false)
+    @Column(name = "age", nullable = false)
     private Integer age;
-    @Column(name="room", nullable = false)
+    @Column(name = "room", nullable = false)
     private String room;
-    @Column(name="doctorName", nullable = false)
+    @Column(name = "doctorName", nullable = false)
     private String doctorName;
-    @Column(name="admitDate")
+    @Column(name = "admitDate")
     private Date admitDate;
-    @Column(name="expenses", nullable = false)
+    @Column(name = "expenses", nullable = false)
     private String expenses;
-    @Column(name="email", nullable = true)
+    @Column(name = "email", nullable = true)
     private String email;
-    @Column(name="status", nullable = false)
+    @Column(name = "status", nullable = false)
     private String status;
-    @Column(name="mobile", nullable = true)
+    @Column(name = "mobile", nullable = true)
     private String mobile;
 }
