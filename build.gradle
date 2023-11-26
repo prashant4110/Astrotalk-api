@@ -1,9 +1,27 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.0'
+	id "com.microsoft.azure.azurewebapp" version "1.7.1"
 	id 'io.spring.dependency-management' version '1.1.4'
 }
-
+azurewebapp {
+	subscription = '3c881da7-3ebb-4ac0-9ef6-5c649d612ac2'
+	resourceGroup = 'dev'
+	appName = 'assignment411'
+	pricingTier = 'ASP-dev-80ca (F1: 1)'
+	region = 'East US '
+	runtime {
+		os = 'Linux'
+		webContainer = 'Tomcat 9.0' // or 'Java SE' if you want to run an executable jar
+		javaVersion = 'Java 17'
+	}
+	appSettings {
+		appSettings = null
+	}
+	auth {
+		type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+	}
+}
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 

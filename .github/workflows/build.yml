@@ -1,0 +1,34 @@
+on:
+  workflow_call:
+    inputs:
+      javaVersion:
+        required: true
+        type: string
+      webapp:
+        required: true
+        type: string
+      secrets:
+        webapppublishprofile:
+          required: true
+  jobs:
+    build-and-deploy:
+      name: Build and deploy
+      runs-on: uhg-runner
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: set up java version
+          uses: actions/setup-java@v3
+          with:
+            java-version: {{inputs.javaVersion}}
+            distribution: 'temurin'
+            cache: 'gradle'
+        - name: Build with Gradle
+          run: ./gradlew build --no-daemon
+
+        - name: 'Deploy to azure webapp'
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: ${{ inputs.webapp }}
+            publish-profile: ${{ secrets.webapppublishprofile }}
+            package: '${{ github.workspace }}/build/libs'
