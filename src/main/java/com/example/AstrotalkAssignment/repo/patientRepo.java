@@ -1,5 +1,6 @@
 package com.example.AstrotalkAssignment.repo;
 
+import com.example.AstrotalkAssignment.dto.User;
 import com.example.AstrotalkAssignment.entity.PatientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,5 +13,5 @@ public interface patientRepo extends JpaRepository<PatientEntity, Integer> {
     @Query(
             value = "update patient SET status = ?2 where patient_id= ?1", nativeQuery = true
     )
-    void updateStatus(Integer patientId, String status);
+    User updateStatus(Integer patientId, String status);
 }

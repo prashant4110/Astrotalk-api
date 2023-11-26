@@ -3,13 +3,7 @@ package com.example.AstrotalkAssignment.dto;
 public class User {
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+    private String name;
 
     public String getEmail() {
         return email;
@@ -27,19 +21,26 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setId(Integer id) {
+        this.id = id;
     }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    private Integer id;
 }

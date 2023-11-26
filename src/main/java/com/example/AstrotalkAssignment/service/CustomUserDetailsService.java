@@ -1,6 +1,7 @@
 package com.example.AstrotalkAssignment.service;
 
 import com.example.AstrotalkAssignment.dto.User;
+import com.example.AstrotalkAssignment.entity.EmployeeEntity;
 import com.example.AstrotalkAssignment.repo.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -21,7 +23,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findUserByEmail(email);
+        EmployeeEntity user1 = userRepository.userDetail(email);
+        User user=new User(user1.getEmail(), user1.getPassword());
         List<String> roles = new ArrayList<>();
         roles.add("USER");
         return org.springframework.security.core.userdetails.User.builder()
