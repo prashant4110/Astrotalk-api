@@ -13,5 +13,5 @@ public interface patientRepo extends JpaRepository<PatientEntity, Integer> {
     @Query(
             value = "update patient SET status = ?2 where patient_id= ?1", nativeQuery = true
     )
-    User updateStatus(Integer patientId, String status);
+    void updateStatus(Integer patientId, String status);
 }

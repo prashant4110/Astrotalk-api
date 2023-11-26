@@ -5,7 +5,6 @@ import com.example.AstrotalkAssignment.dto.commonResponseDTO;
 import com.example.AstrotalkAssignment.dto.jwtResponse;
 import com.example.AstrotalkAssignment.dto.jwtRequest;
 import com.example.AstrotalkAssignment.entity.EmployeeEntity;
-import com.example.AstrotalkAssignment.entity.PatientEntity;
 import com.example.AstrotalkAssignment.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +52,7 @@ public class JwtAuthController {
     public ResponseEntity<?> addEmployee(@RequestBody EmployeeEntity req) throws Exception {
         boolean success = employeeService.saveRecord(req);
         if (success) {
-            return new ResponseEntity<>(commonResponseDTO.builder().status("Success").build(), HttpStatus.OK);
+            return new ResponseEntity<>(commonResponseDTO.builder().status("User Registered Successfully").build(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(commonResponseDTO.builder().status("Failed").build(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
