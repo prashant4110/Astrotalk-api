@@ -24,7 +24,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+        run: ./gradlew build
 
       - name: 'Deploy to azure webapp'
         uses: azure/webapps-deploy@v2
