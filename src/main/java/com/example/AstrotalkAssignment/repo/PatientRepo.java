@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface patientRepo extends JpaRepository<PatientEntity, Integer> {
+public interface PatientRepo extends JpaRepository<PatientEntity, Integer> {
     @Modifying
     @Query(
             value = "update patient SET status = ?2 where patient_id= ?1", nativeQuery = true

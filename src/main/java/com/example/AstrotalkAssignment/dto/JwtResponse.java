@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-public class jwtResponse {
+public class JwtResponse {
     private String token;
     private String email;
 }

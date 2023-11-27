@@ -1,9 +1,9 @@
 package com.example.AstrotalkAssignment.controller;
 
-import com.example.AstrotalkAssignment.Auth.jwtUtils;
-import com.example.AstrotalkAssignment.dto.commonResponseDTO;
-import com.example.AstrotalkAssignment.dto.jwtResponse;
-import com.example.AstrotalkAssignment.dto.jwtRequest;
+import com.example.AstrotalkAssignment.Auth.JwtUtils;
+import com.example.AstrotalkAssignment.dto.CommonResponseDTO;
+import com.example.AstrotalkAssignment.dto.JwtResponse;
+import com.example.AstrotalkAssignment.dto.JwtRequest;
 import com.example.AstrotalkAssignment.entity.EmployeeEntity;
 import com.example.AstrotalkAssignment.service.EmployeeService;
 import org.slf4j.Logger;
@@ -29,13 +29,13 @@ public class JwtAuthController {
     EmployeeService employeeService;
 
     @Autowired
-    private jwtUtils helper;
+    private JwtUtils helper;
 
     private Logger logger = LoggerFactory.getLogger(JwtAuthController.class);
 
 //getting token here
     @PostMapping("/login")
-    public ResponseEntity<jwtResponse> login(@RequestBody jwtRequest request) {
+    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) {
 
         this.doAuthenticate(request.getEmail(), request.getPassword());
 
@@ -43,7 +43,7 @@ public class JwtAuthController {
         String userDetails = userDetailsService.loadUserByUsername(request.getEmail()).toString();
         String token = this.helper.generate(userDetails, "User");
 
-        jwtResponse response = jwtResponse.builder().token(token).email(request.getEmail()).build();
+        JwtResponse response = JwtResponse.builder().token(token).email(request.getEmail()).build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -52,9 +52,9 @@ public class JwtAuthController {
     public ResponseEntity<?> addEmployee(@RequestBody EmployeeEntity req) throws Exception {
         boolean success = employeeService.saveRecord(req);
         if (success) {
-            return new ResponseEntity<>(commonResponseDTO.builder().status("User Registered Successfully").build(), HttpStatus.OK);
+            return new ResponseEntity<>(CommonResponseDTO.builder().status("User Registered Successfully").build(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(commonResponseDTO.builder().status("Failed").build(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(CommonResponseDTO.builder().status("Failed").build(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

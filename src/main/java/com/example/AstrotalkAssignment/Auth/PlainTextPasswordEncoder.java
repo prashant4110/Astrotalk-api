@@ -2,7 +2,7 @@ package com.example.AstrotalkAssignment.Auth;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class plainTextPasswordEncoder implements PasswordEncoder {
+public class PlainTextPasswordEncoder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence rawPassword) {
@@ -18,8 +18,8 @@ public class plainTextPasswordEncoder implements PasswordEncoder {
         return INSTANCE;
     }
 
-    private static final PasswordEncoder INSTANCE = new plainTextPasswordEncoder();
+    private static final PasswordEncoder INSTANCE = new PlainTextPasswordEncoder();
 
-    private plainTextPasswordEncoder() {
+    private PlainTextPasswordEncoder() {
     }
 }

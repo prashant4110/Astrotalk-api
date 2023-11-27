@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-public class jwtRequest {
+public class JwtRequest {
     private String email;
     private String password;
 }
