@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Builder
 @Data
-public class patientDetailDTO {
+public class PatientDetailDTO {
     @NonNull
     private String name;
     @NonNull

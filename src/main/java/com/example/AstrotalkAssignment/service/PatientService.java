@@ -1,7 +1,7 @@
 package com.example.AstrotalkAssignment.service;
 
 import com.example.AstrotalkAssignment.entity.PatientEntity;
-import com.example.AstrotalkAssignment.repo.patientRepo;
+import com.example.AstrotalkAssignment.repo.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PatientService {
     @Autowired
-    patientRepo repo;
+    PatientRepo repo;
 
     @Transactional
     public boolean saveRecord(PatientEntity req) throws Exception {

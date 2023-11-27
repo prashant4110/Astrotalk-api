@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class commonResponseDTO {
+public class CommonResponseDTO {
     private String status;
     private List<?> data;
 }

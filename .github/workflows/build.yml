@@ -1,0 +1,35 @@
+on:
+  workflow_call:
+    inputs:
+      javaVersion:
+        required: true
+        type: string
+      webapp:
+        required: true
+        type: string
+    secrets:
+      webapppublishprofile:
+        required: true
+jobs:
+  build-and-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up java version
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
+
+      - name: 'Deploy to azure webapp'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ inputs.webapp }}
+          publish-profile: ${{ secrets.webapppublishprofile }}
+          package: '${{ github.workspace }}/build/libs'

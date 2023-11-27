@@ -21,10 +21,10 @@ import java.util.Map;
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
-    private final jwtUtils jwtUtil;
+    private final JwtUtils jwtUtil;
     private final ObjectMapper mapper;
 
-    public JwtAuthorizationFilter(jwtUtils jwtUtil, ObjectMapper mapper) {
+    public JwtAuthorizationFilter(JwtUtils jwtUtil, ObjectMapper mapper) {
         this.jwtUtil = jwtUtil;
         this.mapper = mapper;
     }

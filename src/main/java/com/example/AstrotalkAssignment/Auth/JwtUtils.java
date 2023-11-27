@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class jwtUtils {
+public class JwtUtils {
     private Key key;
     public static final String secret = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
