@@ -30,7 +30,7 @@ This application runs on SqlServer database and the RESTApi are tested on Insomn
 | Method | URL                     | Description                                                  |
 |--------|-------------------------|--------------------------------------------------------------|
 | Post   | /api/auth/signUp        | signUp new member with name,password and email.              |
-| Get    | /api/auth/login         | login to get the authorization token                         |
+| Post   | /api/auth/login         | login to get the authorization token                         |
 | Get    | /api/patient/all        | Get all patient record, need Bearer Token to hit Patient api |
 | Post   | /api/patient/ admit     | save the patient info while admit them in hospital           |
 | Put | /api/patient/discharge | update the patient Record while discharge from Hospital      |
